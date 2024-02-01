@@ -1,0 +1,20 @@
+@media(max-width:600px){
+    .screen4{
+       
+        margin-top: 3rem;
+    }
+    .screen4-items {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    .box{
+        display: flex;
+        width: 93vw;
+        height: 18rem;
+        background-color: rgba(1, 20, 42, 0.74);
+        border-radius: 1rem;
+    }
+    
+      
+}
