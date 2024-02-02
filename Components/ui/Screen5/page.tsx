@@ -25,21 +25,11 @@ const page = () => {
         </div>
         <div className="screen5_button">
          <div className="screen5_button1">
-         <h2><Link href="/"><u>See Product</u></Link></h2>
-         <Image
-         src={Arrow}
-         alt='arrow-image'
-         priority
-         className='arrow'
-         />
+        <button className="campaign">Know More</button>
+        
          </div>
-         <h2 className="upload"><Link href="/addproduct"><u>Upload Products</u></Link></h2>
-         <Image
-         src={Arrow}
-         alt='arrow-image'
-         priority
-         className='arrow'
-         />
+         
+         
       </div> 
       <div className="screen5_label">
            <Image

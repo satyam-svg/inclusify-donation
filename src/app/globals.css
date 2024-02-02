@@ -37,3 +37,8 @@ body{position: relative;
     display: flex;
     justify-content: space-between;
   }
+
+  .main_wrapper{
+    display: flex;
+    flex-direction: column;
+  }

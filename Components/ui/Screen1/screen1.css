@@ -2,7 +2,7 @@
 @media(max-width:600px){
     .screen1 {
         padding-left: 0.7rem;
-         margin-top: 1rem;
+         
       }
       .screen1 .screen1-items{
         display: flex;

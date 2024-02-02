@@ -70,4 +70,16 @@
         margin-top: 0.19rem;
         font-weight: bold;
       }
+      .campaign{
+        width: 7.125rem;
+        height: 2.063rem;
+        background-color: rgba(84, 201, 55, 1);
+        font-size: 0.875rem;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        border-radius: 0.5rem;
+      }
 }
