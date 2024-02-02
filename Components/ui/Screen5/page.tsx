@@ -25,7 +25,7 @@ const page = () => {
         </div>
         <div className="screen5_button">
          <div className="screen5_button1">
-        <button className="campaign">Know More</button>
+        <button className="campaign"><Link href="/campaign">Know More</Link></button>
         
          </div>
          
