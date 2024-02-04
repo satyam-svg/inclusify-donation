@@ -6,6 +6,7 @@ import Image from 'next/image'
 import child from './image/stephen-andrews-u0zTce7KNlY-unsplash.jpg'
 import volunteer from './image/alexander-simonsen-44al1GlFVxo-unsplash.jpg'
 import Footer from '../../../Components/ui/Footer/page'
+import Link from 'next/link'
 function page() {
   return (
     <div>
@@ -90,7 +91,7 @@ function page() {
                         <p>Join our community to volunteer and help <br /> those in need </p>
                     </div>
                     <div className="donate_button">
-                            <button>Become A Volunteer</button>
+                            <button><Link href="/campaign/form">Become A Volunteer</Link></button>
                           </div>
 
                           <Image

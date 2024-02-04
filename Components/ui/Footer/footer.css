@@ -2,10 +2,11 @@
     .footer{
         margin-top: 1rem;
         width: 100%;
-        height: 16.313rem;
+        height: 100%;
         background-color: black;
         color: white;
         position: relative;
+        overflow-x: hidden;
     }
     .footer-items{
        margin-top: 1rem;

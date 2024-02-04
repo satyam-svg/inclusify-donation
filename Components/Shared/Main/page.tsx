@@ -7,6 +7,7 @@ import Screen4 from '../../ui/Screen4/page'
 import Screen5 from '../../ui/Screen5/page'
 import Screen6 from '../../ui/Screen6/page'
 import Footer from '../../ui/Footer/page'
+import Chatbot from '../../ui/Chatbot/page'
 const page = () => {
   return (
     <>
@@ -14,6 +15,7 @@ const page = () => {
      <Screen1/>
      <Screen2/>
      <Screen3/>
+     <Chatbot/>
      <Screen4/>
      <Screen5/>
      <Screen6/>
