@@ -7,15 +7,9 @@ import heart from './image/Heart Cross.png'
 import {useRouter} from "next/navigation";
 import toast from "react-hot-toast";
 import axios from "axios";
+import Link from "next/link";
 const Page = () => {
-  const [selectedPrice, setSelectedPrice] = useState<number | null>(50);
-  const router = useRouter();
-  const handleBoxClick = (price: number) => {
-    setSelectedPrice(price);
-  };
-  function handlePage(){
-    router.push("/payment")
-  }
+
 
   return (
     <>
@@ -48,58 +42,29 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className="plans_price">
-            <div className="plans_price_row1">
-              <div
-                className={`plan_box ${selectedPrice === 50 ? "selected" : ""}`}
-                onClick={() => handleBoxClick(50)}
-              >
-                Rs.50
-              </div>
-              <div
-                className={`plan_box ${selectedPrice === 100 ? "selected" : ""}`}
-                onClick={() => handleBoxClick(100)}
-              >
-                Rs.100
-              </div>
-              <div
-                className={`plan_box ${selectedPrice === 250? "selected" : ""}`}
-                onClick={() => handleBoxClick(250)}
-              >
-                Rs.250
-              </div>
-            </div>
-            <div className="plans_price_row1">
-              <div
-                className={`plan_box ${selectedPrice === 500 ? "selected" : ""}`}
-                onClick={() => handleBoxClick(500)}
-              >
-                Rs.500
-              </div>
-              <div
-                className={`plan_box ${selectedPrice === 1000 ? "selected" : ""}`}
-                onClick={() => handleBoxClick(1000)}
-              >
-                Rs.1000
-              </div>
-              <div
-                className={`plan_box ${selectedPrice === 2500 ? "selected" : ""}`}
-                onClick={() => handleBoxClick(2500)}
-              >
-                Rs.2500
-              </div>
-            </div>
-            <div className="result_price">
-              <h4>Rs.</h4>{selectedPrice !== null && <p> {selectedPrice}</p>}
-              <h5>INR</h5>
-              
-            </div>
-            <h6>Fuel the cause: <u>Your donations empower access to justice.</u></h6>
-
-            <button onClick={handlePage} className="final_donation">
-          Donate Rs.{selectedPrice !== null && <p> {selectedPrice}</p>}
-        </button>
-          </div>
+         <div className="form_donation1">
+             <form action="/">
+              <label htmlFor="campaign">Select the campaign for which you want to donate  </label>
+              <select name="languages" id="lang">
+        <option value="javascript">JavaScript</option>
+        <option value="php">PHP</option>
+        <option value="java">Java</option>
+        <option value="golang">Golang</option>
+        <option value="python">Python</option>
+        <option value="c#">C#</option>
+        <option value="C++">C++</option>
+        <option value="erlang">Erlang</option>
+      </select>
+      <label htmlFor="price">Enter a Donation Amount</label>
+      <input type="number" placeholder="Enter amount"/>
+      <label htmlFor="price">Name of Donar</label>
+      <input type="number" placeholder="Your Name"/>
+      <label htmlFor="price">Your Email</label>
+      <input type="number" placeholder="Enter Email"/>
+      <button ><Link href="/payment">Pay Now</Link></button>
+             </form>
+            
+         </div>
         </div>
       </div>
     </>

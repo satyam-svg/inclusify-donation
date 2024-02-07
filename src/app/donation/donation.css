@@ -159,4 +159,41 @@ h6{
     color: white;
     font-weight: bold;
 }
+
+.form_donation1 form{
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 3rem;
+}
+
+form label{
+  font-size: 1rem;
+  font-weight: bold;
+}
+select{
+   width: 78vw;
+   height: 5vh;
+   border-radius: 0.5rem;
+   padding: 0.6rem;
+}
+ input{
+  width: 78vw;
+   height: 5vh;
+   border-radius: 0.5rem;
+   padding: 1.7rem;
+   color: rgba(128, 128, 128, 1);
+}
+
+button{
+  margin-top: 0.6rem;
+  width: 78vw;
+  height: 5vh;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(19, 169, 16, 1);
+}
 }
