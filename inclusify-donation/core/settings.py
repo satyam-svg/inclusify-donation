@@ -12,17 +12,20 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 import os
 from pathlib import Path
+import environ
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# Build paths inside the projec
+# t like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+environ.Env.read_env(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1!=9v1oy&zl@=q&&q2rd@#wd_vwsb77qbtj#9-hfl^7e6r*_%%'
-
+SECRET_KEY = '9v1oy&zl@=q&&q2rd@#wd_vwsb77qbtj#9-hfl^7e6r*_%%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -32,21 +35,27 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+     'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
     'rest_framework',
     'corsheaders',
     'djoser',
     'accounts',
+    'campaigns',
+
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
 
 
 ]
-CSRF_COOKIE_SECURE = True  # Set to True if using HTTPS
-CSRF_USE_SESSIONS = True   # Set to True to store the CSRF token in the session
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -66,7 +76,7 @@ CORS_ALLOWED_ORIGINS=[
 CORS_ALLOWED_METHODS=[
     'GET','POST','PUT','PATCH','DELETE',
 ]
-CORS_ALLOW_ALL_ORIGINS = True
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -82,6 +92,8 @@ TEMPLATES = [
         },
     },
 ]
+
+ACCOUNT_EMAIL_VERIFICATION = "none"
 
 WSGI_APPLICATION = 'core.wsgi.application'
 AUTH_USER_MODEL='accounts.Account'
@@ -132,6 +144,12 @@ RAZOR_KEY_ID = 'YOUR_KEY_ID'
 RAZOR_KEY_SECRET = 'YOUR_KEY_SECRET'
 
 
+
+# Redirect to this URL after logging in
+LOGIN_REDIRECT_URL = '/'
+
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
@@ -147,10 +165,18 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = {
+    'site_header':"Mittal Mart",
+    'site_brand':"your order, we deliver",
+    'site_logo':"img/mittal_mart_logo.png",
+    'copyright':"mittalmart.com",
+
+}
 ###### SMTP configuration #######
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
-EMAIL_HOST_USER='dhanashreemhatrewebdeveloper@gmail.com'
-EMAIL_HOST_PASSWORD='qxqbslnldxzntgic'
+EMAIL_HOST_USER=env('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD=env('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS=True

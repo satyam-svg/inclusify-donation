@@ -38,8 +38,8 @@ class Account(AbstractUser):
     last_name=models.CharField(max_length=50,null=True)
     username=models.CharField(max_length=50,unique=True)
     email=models.EmailField(max_length=100,unique=True)
-    phone_number=models.CharField(max_length=50,null=True,default="9999999999")
-    is_vendor=models.BooleanField(default=False)
+    phone_number=models.CharField(max_length=50,null=True,default="")
+    is_volunteer=models.BooleanField(default=False)
    
     #required
     date_joined=models.DateTimeField(auto_now_add=True)

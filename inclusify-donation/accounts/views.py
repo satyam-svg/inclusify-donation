@@ -21,7 +21,31 @@ from django.core.mail import EmailMessage
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 # Create your views here.
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+from dj_rest_auth.registration.views import SocialLoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import RedirectView
 
+class GoogleLoginView(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
+    callback_url = GOOGLE_REDIRECT_URL
+    client_class = OAuth2Client
+
+
+
+
+
+class UserRedirectView(LoginRequiredMixin, RedirectView):
+    """
+    This view is needed by the dj-rest-auth-library in order to work the google login. It's a bug.
+    """
+
+    permanent = False
+
+    def get_redirect_url(self):
+        return "redirect-url"
+    
 
 class RegisterView(APIView):
     def post(self,request):
@@ -40,10 +64,8 @@ class RegisterView(APIView):
         to_email=user.email
         send_email=EmailMessage(mail_subject,message,to=[to_email])
         send_email.send()
-        success_message = f"Account created successfully. An activation email has been sent to {user.email}. Please check your email and activate your account."
-        
-        return Response({'success': success_message})
-        
+        return redirect('/accounts/login/?command=verification&email='+user.email)
+
 
    
 
@@ -77,25 +99,35 @@ class LoginView(APIView):
 
 
 
+def volunteer_registration(APIView):
+    def post(self,request):
+        first_name=request.data.get('first_name')
+        last_name=request.data.get('last_name')
+        email=request.data.get('email')
+        phone_number=request.data.get('phone_number')
+
+        return Response("Submitted")
+
+    
+
 
 @login_required(login_url='accounts:login')
 def user_logout(request):
-    logout(request)
-    return redirect('http://localhost:3000/login')
+   logout(request)
+   return redirect('accounts:login')
 
-def activate(request, uidb64, token):
-    try:
-        uid = urlsafe_base64_decode(uidb64).decode()
-        user = Account._default_manager.get(pk=uid)
-    except (TypeError, ValueError, OverflowError, Account.DoesNotExist):
-        user = None
-    
-    if user is not None and default_token_generator.check_token(user, token):
-        user.is_active = True
-        user.save()
-        return redirect('http://localhost:3000/login')
-    else:
-        return redirect('accounts:sign-up')
+def activate(request,uidb64,token):
+   try:
+      uid=urlsafe_base64_decode(uidb64).decode()
+      user=Account._default_manager.get(pk=uid)
+   except(TypeError,ValueError,OverflowError,Account.DoesNotExist):
+      user=None
+   if user is not None and default_token_generator.check_token(user,token):
+      user.is_active=True
+      user.save()
+      return redirect('accounts:login')
+   else:
+      return redirect('accounts:sign-up')
 
 
 class Forget_Password(APIView):
