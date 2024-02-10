@@ -30,7 +30,9 @@ body{position: relative;
   #google_translate_element .goog-te-gadget{
     color: white !important;
   }
-
+  .goog-te-combo:last-child{
+    display: none;
+  }
 
   #google_translate_element .goog-te-combo{
     color: black !important;
