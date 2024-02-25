@@ -13,6 +13,15 @@ pnpm dev
 # or
 bun dev
 ```
+To run backend server:
+Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+Run: 
+```bash
+py manage.py runserver
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
